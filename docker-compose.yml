@@ -20,9 +20,6 @@ services:
       - exosuite-tests
     volumes:
       - /etc/hosts:/etc/hosts
-    deploy:
-      mode: replicated
-      replicas: 3
 
   firefox:
     image: selenium/node-firefox
@@ -35,19 +32,6 @@ services:
       - exosuite-tests
     volumes:
       - /etc/hosts:/etc/hosts
-
-  phantomjs:
-    image: madhavajay/selenium-node-phantomjs
-    depends_on:
-      - selenium-hub
-    environment:
-      - PORT=5555
-      - HUB=http://selenium-hub:4444
-    networks:
-      - exosuite-tests
-    volumes:
-      - /etc/hosts:/etc/hosts
-    entrypoint: 'bash -c "phantomjs /home/phantomjs/ghostdriver/src/main.js --hub=$$HUB --port=$$PORT --ip=`hostname -I | cut -d\" \" -f1` --remoteHost=http://$$HOSTNAME:5555"'
 
 networks:
   exosuite-tests:
