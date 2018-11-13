@@ -5,19 +5,20 @@ services:
   selenium-hub:
     image: selenium/hub:3.141.5-astatine
     container_name: selenium-hub
-    ports:
-      - "4444:4444"
+    network_mode: "host"
   chrome:
     image: selenium/node-chrome:3.141.5-astatine
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
+      - HUB_HOST=dev.exosuite.fr
       - HUB_PORT=4444
+    network_mode: "host"
   firefox:
     image: selenium/node-firefox:3.141.5-astatine
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
+      - HUB_HOST=dev.exosuite.fr
       - HUB_PORT=4444
+    network_mode: "host"
