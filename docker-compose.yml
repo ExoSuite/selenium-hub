@@ -20,6 +20,7 @@ services:
       - exosuite-tests
     volumes:
       - /etc/hosts:/etc/hosts
+      - /dev/shm:/dev/shm
 
   firefox:
     image: selenium/node-firefox:3.141.59-dubnium
@@ -32,6 +33,7 @@ services:
       - exosuite-tests
     volumes:
       - /etc/hosts:/etc/hosts
+      - /dev/shm:/dev/shm
 
 networks:
   exosuite-tests:
