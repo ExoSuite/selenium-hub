@@ -13,6 +13,8 @@ services:
     ports:
       - 4444:4444
     command: "start"
+    networks:
+      - exosuite-tests
 
 networks:
   exosuite-tests:
