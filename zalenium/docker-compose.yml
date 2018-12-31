@@ -1,0 +1,19 @@
+# To execute this docker-compose yml file use `docker-compose -f <file_name> up`
+# Add the `-d` flag at the end for detached execution
+version: "3"
+services:
+  zalenium:
+    image: dosel/zalenium
+    privileged: true
+    container_name: zalenium
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/videos:/home/seluser/videos
+      - /etc/hosts:/tmp/node/etc/hosts
+    ports:
+      - 4444:4444
+    command: "start"
+
+networks:
+  exosuite-tests:
+      driver: bridge
