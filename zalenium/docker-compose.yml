@@ -5,6 +5,7 @@ services:
   zalenium:
     image: dosel/zalenium
     privileged: true
+    tty: true
     container_name: zalenium
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -12,7 +13,12 @@ services:
       - /etc/hosts:/tmp/node/etc/hosts
     ports:
       - 4444:4444
-    command: "start"
+    command: >
+      start --desiredContainers 2
+            --maxDockerSeleniumContainers 8
+            --timeZone "Europe/Berlin"
+            --videoRecordingEnabled true
+            --startTunnel true
     networks:
       - exosuite-tests
 
