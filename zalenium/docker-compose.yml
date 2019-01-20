@@ -11,8 +11,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/videos:/home/seluser/videos
       - /etc/hosts:/tmp/node/etc/hosts
-    ports:
-      - 4444:4444
     command: >
       start --desiredContainers 2
             --maxDockerSeleniumContainers 8
